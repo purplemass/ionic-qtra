@@ -2,12 +2,6 @@ angular.module('starter.services', [])
 
 .service('LoginService', function($q, $localstorage) {
 
-  // ensure localStorage login data is correct
-  if ($localstorage.get('loggedin') !== true) {
-      $localstorage.set('loggedin', false);
-      $localstorage.set('user', null);
-  }
-
   return {
     loginUser: function(user, pw) {
       var deferred = $q.defer();
@@ -30,18 +24,22 @@ angular.module('starter.services', [])
       return promise;
     },
     isLoggedIn: function() {
-      return $localstorage.get('loggedin');
+      if ($localstorage.get('loggedin') === "true") {
+        return true;
+      } else {
+        return false;
+      }
     },
     getUser: function() {
       return $localstorage.get('user');
     },
     setUser: function(user) {
-      $localstorage.set('loggedin', true);
+      $localstorage.set('loggedin', "true");
       $localstorage.set('user', user);
     },
     clearUser: function() {
-      $localstorage.set('loggedin', false);
-      $localstorage.set('user', null);
+      $localstorage.set('loggedin', "");
+      $localstorage.set('user', "");
     }
   }
 })

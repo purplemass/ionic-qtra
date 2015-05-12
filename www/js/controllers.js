@@ -3,6 +3,10 @@ angular.module('starter.controllers', [])
 .controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
   $scope.data = {};
 
+  if (LoginService.isLoggedIn() === true) {
+    $state.go('tab.dash');
+  }
+
   $scope.login = function() {
 
     // debug

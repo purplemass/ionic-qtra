@@ -1,13 +1,21 @@
 angular.module('starter.services', [])
 
-.service('LoginService', function($q) {
+.service('LoginService', function($q, $localstorage) {
+
+  // ensure localStorage login data is correct
+  if ($localstorage.get('loggedin') !== true) {
+      $localstorage.set('loggedin', false);
+      $localstorage.set('user', null);
+  }
+
   return {
-    loginUser: function(name, pw) {
+    loginUser: function(user, pw) {
       var deferred = $q.defer();
       var promise = deferred.promise;
 
-      if ( (name == 'bob' && pw == 'bob') || (name == 'oliver' && pw == 'oliver') ) {
-        deferred.resolve('Welcome ' + name + '!');
+      if ( (user == 'bob' && pw == 'bob') || (user == 'oliver' && pw == 'oliver') ) {
+        this.setUser(user);
+        deferred.resolve('Welcome ' + user + '!');
       } else {
         deferred.reject('Wrong credentials.');
       }
@@ -20,6 +28,20 @@ angular.module('starter.services', [])
         return promise;
       }
       return promise;
+    },
+    isLoggedIn: function() {
+      return $localstorage.get('loggedin');
+    },
+    getUser: function() {
+      return $localstorage.get('user');
+    },
+    setUser: function(user) {
+      $localstorage.set('loggedin', true);
+      $localstorage.set('user', user);
+    },
+    clearUser: function() {
+      $localstorage.set('loggedin', false);
+      $localstorage.set('user', null);
     }
   }
 })

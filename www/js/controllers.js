@@ -1,16 +1,15 @@
 angular.module('starter.controllers', [])
 
-.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state, $localstorage) {
+.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
   $scope.data = {};
 
   $scope.login = function() {
+
     // debug
-    console.log("loggedin: \t" + $localstorage.get('loggedin'));
+    console.log("loggedin: \t" + LoginService.isLoggedIn());
 
     LoginService.loginUser($scope.data.username, $scope.data.password)
       .success(function(data) {
-        $localstorage.set('user', $scope.data.username);
-        $localstorage.set('loggedin', true);
         $state.go('tab.dash');
       })
       .error(function(data) {

@@ -44,39 +44,25 @@ angular.module('starter.services', [])
   }
 })
 
-.factory('Projects', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
-  var projects = [{
-    id: 0,
-    name: 'Project Name 1',
-    lastText: 'Project description 1',
-    icon: 'ion-ios-briefcase',
-    trees: [
-      { id: 0, name: "T1-1" },
-      { id: 1, name: "T1-2" },
-      { id: 2, name: "T1-3" },
-    ]
-  }, {
-    id: 1,
-    name: 'Project Name 2',
-    lastText: 'Project description 2',
-    icon: 'ion-ios-briefcase',
-    trees: [
-      { id: 0, name: "T2-1" },
-    ]
-  },{
-    id: 2,
-    name: 'Project Name 3',
-    lastText: 'Project description 3',
-    icon: 'ion-ios-briefcase',
-    trees: []
-  }];
+.factory('Projects', function($q, $http) {
+  var projectsURL = 'js/data/projects.json';
+  var projects = [];
+  var deferred = $q.defer();
+  var promise = deferred.promise;
+  $http.get(projectsURL)
+    .success(function (data, status, headers, config) {
+      projects = data;
+      deferred.resolve(data);
+    })
+    .error(function(error) {
+      console.log('ERROR', error);
+      deferred.reject([]);
+    });
 
   return {
     all: function() {
-      return projects;
+      console.log(deferred.promise);
+      return deferred.promise;
     },
     remove: function(project) {
       projects.splice(projects.indexOf(project), 1);

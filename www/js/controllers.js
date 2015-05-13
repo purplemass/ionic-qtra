@@ -61,7 +61,10 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ProjectsCtrl', function($scope, Projects) {
-  $scope.projects = Projects.all();
+  Projects.all().then(function(promise) {
+    $scope.projects = promise;
+  });
+
   $scope.remove = function(project) {
     Projects.remove(project);
   }

@@ -44,13 +44,12 @@ angular.module('starter.services', [])
   }
 })
 
-.factory('Projects', function($q, $http) {
+.service('Projects', function($q, $http) {
   var projectsURL = 'js/data/projects.json';
   var projects = [];
   var deferred = $q.defer();
-  var promise = deferred.promise;
   $http.get(projectsURL)
-    .success(function (data, status, headers, config) {
+    .success(function (data) {
       projects = data;
       deferred.resolve(data);
     })
@@ -61,7 +60,6 @@ angular.module('starter.services', [])
 
   return {
     all: function() {
-      console.log(deferred.promise);
       return deferred.promise;
     },
     remove: function(project) {
@@ -74,6 +72,19 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+    loadNotUsed: function() {
+      return $http.get(projectsURL)
+        .then(function(response) {
+          if (typeof response.data === 'object') {
+            projects = response.data;
+            return projects;
+          } else {
+            return $q.reject(response.data);
+          }
+        }, function(response) {
+            return $q.reject(response.data);
+        });
     }
   };
 });

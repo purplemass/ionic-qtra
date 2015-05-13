@@ -61,7 +61,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ProjectsCtrl', function($scope, Projects) {
-  Projects.all().then(function(promise) {
+  Projects.loadNotUsed().then(function(promise) {
     $scope.projects = promise;
   });
 

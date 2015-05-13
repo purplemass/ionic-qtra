@@ -52,22 +52,20 @@ angular.module('starter.services', [])
     id: 0,
     name: 'Project Name 1',
     lastText: 'Project description 1',
+    icon: 'ion-ios-briefcase',
     face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
   }, {
     id: 1,
     name: 'Project Name 2',
     lastText: 'Project description 2',
+    icon: 'ion-ios-briefcase',
     face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
   },{
     id: 2,
     name: 'Project Name 3',
     lastText: 'Project description 3',
+    icon: 'ion-ios-briefcase',
     face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
-  }, {
-    id: 3,
-    name: 'Project Name 4',
-    lastText: 'Project description 4',
-    face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
   }];
 
   return {

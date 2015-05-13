@@ -47,20 +47,10 @@ angular.module('starter.services', [])
 .service('Projects', function($q, $http) {
   var projectsURL = 'js/data/projects.json';
   var projects = [];
-  var deferred = $q.defer();
-  $http.get(projectsURL)
-    .success(function (data) {
-      projects = data;
-      deferred.resolve(data);
-    })
-    .error(function(error) {
-      console.log('ERROR', error);
-      deferred.reject([]);
-    });
 
   return {
     all: function() {
-      return deferred.promise;
+      return projects;
     },
     remove: function(project) {
       projects.splice(projects.indexOf(project), 1);
@@ -73,7 +63,7 @@ angular.module('starter.services', [])
       }
       return null;
     },
-    loadNotUsed: function() {
+    load: function() {
       return $http.get(projectsURL)
         .then(function(response) {
           if (typeof response.data === 'object') {
@@ -82,8 +72,9 @@ angular.module('starter.services', [])
           } else {
             return $q.reject(response.data);
           }
-        }, function(response) {
-            return $q.reject(response.data);
+        }, function(error) {
+            console.log('ERROR', error);
+            return $q.reject(error);
         });
     }
   };

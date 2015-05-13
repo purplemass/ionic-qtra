@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+angular.module('qtra.services', [])
 
 .service('LoginService', function($q, $localstorage) {
 

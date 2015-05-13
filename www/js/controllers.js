@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('qtra.controllers', [])
 
 .controller('LoginController', function($scope, $state, LoginService, $ionicPopup, $ionicHistory) {
   $scope.data = {};

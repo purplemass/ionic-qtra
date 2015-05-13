@@ -44,7 +44,7 @@ angular.module('starter.services', [])
   }
 })
 
-.service('Projects', function($q, $http) {
+.service('ProjectService', function($q, $http) {
   var projectsURL = 'js/data/projects.json';
   var projects = [];
 
@@ -64,18 +64,17 @@ angular.module('starter.services', [])
       return null;
     },
     load: function() {
-      return $http.get(projectsURL)
-        .then(function(response) {
-          if (typeof response.data === 'object') {
-            projects = response.data;
-            return projects;
-          } else {
-            return $q.reject(response.data);
-          }
-        }, function(error) {
-            console.log('ERROR', error);
-            return $q.reject(error);
-        });
+      return $http.get(projectsURL).then(function(response) {
+        if (typeof response.data === 'object') {
+          projects = response.data;
+          return projects;
+        } else {
+          return $q.reject(response.data);
+        }
+      }, function(error) {
+        console.log('ERROR', error);
+        return $q.reject(error);
+      });
     }
   };
 });

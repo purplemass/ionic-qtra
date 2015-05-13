@@ -33,7 +33,7 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
-    controller: 'LoginCtrl',
+    controller: 'LoginController',
     data: {
       requireLogin: false
     }
@@ -43,7 +43,7 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
   .state('logout', {
     url: '/logout',
     templateUrl: 'templates/logout.html',
-    controller: 'LoginCtrl'
+    controller: 'LoginController'
   })
 
   // setup an abstract state for the tabs directive
@@ -60,7 +60,7 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
       views: {
         'tab-projects': {
           templateUrl: 'templates/tab-projects.html',
-          controller: 'ProjectsCtrl'
+          controller: 'ProjectsController'
         }
       }
     })
@@ -69,7 +69,7 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
       views: {
         'tab-projects': {
           templateUrl: 'templates/project-detail.html',
-          controller: 'ProjectDetailCtrl'
+          controller: 'ProjectDetailController'
         }
       }
     })
@@ -78,7 +78,7 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
       views: {
         'tab-projects': {
           templateUrl: 'templates/tree-detail.html',
-          controller: 'TreeDetailCtrl'
+          controller: 'TreeDetailController'
         }
       }
     })
@@ -88,7 +88,7 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
     views: {
       'tab-account': {
         templateUrl: 'templates/tab-account.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginController'
       }
     }
   });

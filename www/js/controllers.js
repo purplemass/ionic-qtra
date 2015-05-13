@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('LoginCtrl', function($scope, $state, LoginService, $ionicPopup, $ionicHistory) {
+.controller('LoginController', function($scope, $state, LoginService, $ionicPopup, $ionicHistory) {
   $scope.data = {};
 
   var logUserIn = function() {
@@ -60,21 +60,21 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('ProjectsCtrl', function($scope, Projects) {
-  Projects.load().then(function(promise) {
+.controller('ProjectsController', function($scope, ProjectService) {
+  ProjectService.load().then(function(promise) {
     $scope.projects = promise;
   });
 
   $scope.remove = function(project) {
-    Projects.remove(project);
+    ProjectService.remove(project);
   }
 })
 
-.controller('ProjectDetailCtrl', function($scope, $stateParams, Projects) {
-  $scope.project = Projects.get($stateParams.projectId);
+.controller('ProjectDetailController', function($scope, $stateParams, ProjectService) {
+  $scope.project = ProjectService.get($stateParams.projectId);
 })
 
-.controller('TreeDetailCtrl', function($scope, $stateParams, Projects) {
-  $scope.project = Projects.get($stateParams.projectId);
+.controller('TreeDetailController', function($scope, $stateParams, ProjectService) {
+  $scope.project = ProjectService.get($stateParams.projectId);
   $scope.tree = $scope.project.trees[$stateParams.treeId];
 })

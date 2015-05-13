@@ -73,6 +73,15 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
         }
       }
     })
+    .state('tab.tree-detail', {
+      url: '/projects/:projectId/:treeId',
+      views: {
+        'tab-projects': {
+          templateUrl: 'templates/tree-detail.html',
+          controller: 'TreeDetailCtrl'
+        }
+      }
+    })
 
   .state('tab.account', {
     url: '/account',

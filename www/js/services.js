@@ -53,19 +53,25 @@ angular.module('starter.services', [])
     name: 'Project Name 1',
     lastText: 'Project description 1',
     icon: 'ion-ios-briefcase',
-    face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
+    trees: [
+      { id: 0, name: "T1-1" },
+      { id: 1, name: "T1-2" },
+      { id: 2, name: "T1-3" },
+    ]
   }, {
     id: 1,
     name: 'Project Name 2',
     lastText: 'Project description 2',
     icon: 'ion-ios-briefcase',
-    face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
+    trees: [
+      { id: 0, name: "T2-1" },
+    ]
   },{
     id: 2,
     name: 'Project Name 3',
     lastText: 'Project description 3',
     icon: 'ion-ios-briefcase',
-    face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+    trees: []
   }];
 
   return {

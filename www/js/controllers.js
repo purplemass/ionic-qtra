@@ -70,3 +70,8 @@ angular.module('starter.controllers', [])
 .controller('ProjectDetailCtrl', function($scope, $stateParams, Projects) {
   $scope.project = Projects.get($stateParams.projectId);
 })
+
+.controller('TreeDetailCtrl', function($scope, $stateParams, Projects) {
+  $scope.project = Projects.get($stateParams.projectId);
+  $scope.tree = $scope.project.trees[$stateParams.treeId];
+})

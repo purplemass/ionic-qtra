@@ -43,52 +43,33 @@ angular.module('starter', ['ionic', 'ionic.utils', 'starter.controllers', 'start
   .state('logout', {
     url: '/logout',
     templateUrl: 'templates/logout.html',
-    controller: 'LoginCtrl',
-    data: {
-      requireLogin: false
-    }
+    controller: 'LoginCtrl'
   })
 
   // setup an abstract state for the tabs directive
   .state('tab', {
     url: "/tab",
     abstract: true,
-    templateUrl: "templates/tabs.html",
-    data: {
-      requireLogin: true
-    }
+    templateUrl: "templates/tabs.html"
   })
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    },
-    data: {
-      requireLogin: true
-    }
-  })
-
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.projects', {
+      url: '/projects',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-projects': {
+          templateUrl: 'templates/tab-projects.html',
+          controller: 'ProjectsCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tab.project-detail', {
+      url: '/projects/:projectId',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-projects': {
+          templateUrl: 'templates/project-detail.html',
+          controller: 'ProjectDetailCtrl'
         }
       }
     })

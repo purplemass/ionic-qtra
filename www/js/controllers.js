@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $ionicHistory, $state) {
+.controller('LoginCtrl', function($scope, $state, LoginService, $ionicPopup, $ionicHistory) {
   $scope.data = {};
 
   var logUserIn = function() {
@@ -24,8 +24,8 @@ angular.module('starter.controllers', [])
         disableAnimate: true,
         disableBack: true
       });
-      $state.go('tab.dash');
-      $ionicViewService.clearHistory();
+      $state.go('tab.projects');
+      $ionicHistory.clearHistory();
     }
   }
 
@@ -56,19 +56,17 @@ angular.module('starter.controllers', [])
       disableBack: true
     });
     $state.go('login', false);
-    $ionicViewService.clearHistory();
+    $ionicHistory.clearHistory();
   }
 })
 
-.controller('DashCtrl', function($scope) {})
-
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+.controller('ProjectsCtrl', function($scope, Projects) {
+  $scope.projects = Projects.all();
+  $scope.remove = function(project) {
+    Projects.remove(project);
   }
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('ProjectDetailCtrl', function($scope, $stateParams, Projects) {
+  $scope.project = Projects.get($stateParams.projectId);
 })

@@ -21,9 +21,11 @@ angular.module('starter.controllers', [])
     //
     if ($state.current.url != '/account') {
       $ionicHistory.nextViewOptions({
+        disableAnimate: true,
         disableBack: true
       });
       $state.go('tab.dash');
+      $ionicViewService.clearHistory();
     }
   }
 
@@ -48,11 +50,13 @@ angular.module('starter.controllers', [])
     LoginService.clearUser();
   }
 
-  $scope.gologin = function() {
+  $scope.backToLogin = function() {
     $ionicHistory.nextViewOptions({
+      disableAnimate: true,
       disableBack: true
     });
     $state.go('login', false);
+    $ionicViewService.clearHistory();
   }
 })
 

@@ -3,21 +3,38 @@ angular.module('starter.controllers', [])
 .controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $ionicHistory, $state) {
   $scope.data = {};
 
-  console.log(LoginService.isLoggedIn());
+  var logUserIn = function() {
+    $scope.loggeduser = LoginService.getUser();
+    // must watch this!
+    // it's an angular thing:
+    // http://stsc3000.github.io/blog/2013/10/26/a-tale-of-frankenstein-and-binding-to-service-values-in-angular-dot-js/
+    //
+    $scope.$watch(
+      function(){ return LoginService.getUser() },
+      function(newVal) {
+        $scope.loggeduser = newVal;
+      }
+    )
+
+    // this is very bad as we have hard-coded route!!
+    // must replace
+    //
+    if ($state.current.url != '/account') {
+      $ionicHistory.nextViewOptions({
+        disableBack: true
+      });
+      $state.go('tab.dash');
+    }
+  }
+
   if (LoginService.isLoggedIn() === true) {
-    $ionicHistory.nextViewOptions({
-      disableBack: true
-    });
-    $state.go('tab.dash');
+    logUserIn();
   }
 
   $scope.login = function() {
-
-    console.log("loggedin: \t" + LoginService.isLoggedIn());
-
     LoginService.loginUser($scope.data.username, $scope.data.password)
       .success(function(data) {
-        $state.go('tab.dash');
+        logUserIn();
       })
       .error(function(data) {
         var alertPopup = $ionicPopup.alert({

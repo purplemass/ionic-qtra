@@ -1,23 +1,23 @@
 CACHE MANIFEST
 # 2015-05-14 v1.0.1
 
-# ALL FILES
-#
-# Get this list by running this command, editing the result:
-# replace:
-#    double slashes // with single ones /
-#    /www with ./
-# remove:
-#   ./qtra.appcache
+# Get this list by running this command
 #
 #   find www -type f | awk '{ print "/" $0'} | grep -v .DS*
 #
-# Ignore this:
+# then replace:
+#    double slashes // with single ones /
+#    /www with ./
 #
-#   ls -R static | egrep -v ^d | awk '/:$/&&f{s=$0;f=0} /:$/&&!f{sub(/:$/,"");s=$0;f=1;next} NF&&f{ print "/" s"/"$0 }'
+# and add ?v=2.0.1 to all ionicons files so we have these:
+#   ./lib/ionic/fonts/ionicons.eot?v=2.0.1
+#   ./lib/ionic/fonts/ionicons.svg?v=2.0.1
+#   ./lib/ionic/fonts/ionicons.ttf?v=2.0.1
+#   ./lib/ionic/fonts/ionicons.woff?v=2.0.1
 #
 
 CACHE:
+./qtra.appcache
 ./css/style.css
 ./img/ionic.png
 ./index.html
@@ -32,6 +32,12 @@ CACHE:
 ./lib/ionic/fonts/ionicons.svg
 ./lib/ionic/fonts/ionicons.ttf
 ./lib/ionic/fonts/ionicons.woff
+
+./lib/ionic/fonts/ionicons.eot?v=2.0.1
+./lib/ionic/fonts/ionicons.svg?v=2.0.1
+./lib/ionic/fonts/ionicons.ttf?v=2.0.1
+./lib/ionic/fonts/ionicons.woff?v=2.0.1
+
 ./lib/ionic/js/angular/angular-animate.js
 ./lib/ionic/js/angular/angular-animate.min.js
 ./lib/ionic/js/angular/angular-resource.js
@@ -97,5 +103,4 @@ CACHE:
 ./templates/tree-detail.html
 
 NETWORK:
-# /rapidfire/api/categories
 *

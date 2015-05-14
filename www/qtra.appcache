@@ -3,8 +3,12 @@ CACHE MANIFEST
 
 # ALL FILES
 #
-# Get this list by running this command, editing the result to replace
-# double slashes // with single ones / and /www with ./
+# Get this list by running this command, editing the result:
+# replace:
+#    double slashes // with single ones /
+#    /www with ./
+# remove:
+#   ./qtra.appcache
 #
 #   find www -type f | awk '{ print "/" $0'} | grep -v .DS*
 #
@@ -84,7 +88,6 @@ CACHE:
 ./lib/ionic/scss/ionicons/_ionicons-variables.scss
 ./lib/ionic/scss/ionicons/ionicons.scss
 ./lib/ionic/version.json
-./qtra.appcache
 ./templates/login.html
 ./templates/logout.html
 ./templates/project-detail.html
